@@ -1,0 +1,1279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Standard – Panchtatva Worldwide Business</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <style>
+        :root {
+            --theme-bg-pastel: #f7f9f8;
+            --theme-bg-card: #ffffff;
+            --theme-bg-dark: #111111;
+            --theme-text-dark: #171717;
+            --theme-text-muted: #64748b;
+            --theme-lime: #b3cc19;
+            --theme-emerald: #10b981;
+            --theme-yellow: #ffc816;
+            --theme-blue: #3b82f6;
+            --theme-border-subtle: #e2e8f0;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-space: 'Space Grotesk', sans-serif;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-poppins);
+        }
+
+        body {
+            background-color: var(--theme-bg-pastel);
+            color: var(--theme-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Navbar */
+        .site-header {
+            padding: 24px 0;
+            background: rgba(247, 249, 248, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--theme-border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            max-height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--theme-text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--theme-emerald);
+            border-bottom: 2px solid var(--theme-emerald);
+            padding-bottom: 4px;
+        }
+
+        .btn-touch {
+            background-color: var(--theme-bg-dark);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.25s ease;
+        }
+
+        .btn-touch:hover {
+            background-color: var(--theme-lime);
+            color: var(--theme-bg-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Header */
+        .blog-hero-banner {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop') center center / cover no-repeat;
+            padding: 110px 0 100px;
+            text-align: center;
+        }
+
+        .blog-hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(247, 249, 248, 0.90);
+            backdrop-filter: blur(2px);
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-hero-content h1 {
+            font-family: var(--font-space);
+            font-size: 52px;
+            font-weight: 800;
+            color: #171717;
+            margin-bottom: 12px;
+        }
+
+        .blog-hero-content p {
+            color: var(--theme-text-muted);
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Grid Section */
+        .blog-section {
+            padding: 90px 0 120px;
+        }
+
+        .blog-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .blog-post-card {
+            background: var(--theme-bg-card);
+            border: 1px solid var(--theme-border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.35s ease;
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+            border-color: var(--theme-lime);
+        }
+
+        .blog-post-thumb {
+            height: 230px;
+            position: relative;
+            overflow: hidden;
+            background-color: #e2e8f0;
+        }
+
+        .blog-post-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-post-card:hover .blog-post-thumb img {
+            transform: scale(1.05);
+        }
+
+        .blog-post-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background-color: var(--theme-bg-dark);
+            color: var(--theme-lime);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .blog-post-content {
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-post-date {
+            font-size: 13px;
+            color: var(--theme-text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .blog-post-title {
+            font-family: var(--font-space);
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--theme-text-dark);
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .blog-post-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .blog-post-title a:hover {
+            color: var(--theme-emerald);
+        }
+
+        .blog-post-summary {
+            color: #64748b;
+            font-size: 14.5px;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .blog-read-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--theme-text-dark);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+
+        .blog-read-link:hover {
+            color: var(--theme-emerald);
+            gap: 12px;
+        }
+
+        /* Fallback placeholder card if no DB posts exist yet */
+        .empty-blog-box {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px dashed var(--theme-border-subtle);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #111111;
+            color: #999999;
+            padding: 80px 0 35px;
+            position: relative;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 50px;
+        }
+
+        .footer-brand-logo img {
+            max-height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-tagline-hero {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 700;
+            color: #3b3b3b;
+            max-width: 480px;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-heading-text {
+            font-family: var(--font-space);
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-newsletter-wrap {
+            max-width: 380px;
+        }
+
+        .newsletter-input-box {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            transition: border-color 0.25s ease;
+        }
+
+        .newsletter-input-box:focus-within {
+            border-bottom-color: #ffffff;
+        }
+
+        .newsletter-input-box i {
+            color: #888888;
+            margin-right: 12px;
+            font-size: 15px;
+        }
+
+        .newsletter-input-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 14.5px;
+            width: 100%;
+        }
+
+        .newsletter-input-box input::placeholder {
+            color: #777777;
+        }
+
+        .newsletter-submit-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .newsletter-submit-btn:hover {
+            transform: translateX(4px);
+            color: var(--theme-lime);
+        }
+
+        .privacy-check-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .privacy-check-label input {
+            accent-color: var(--theme-lime);
+            cursor: pointer;
+        }
+
+        .privacy-check-label a {
+            color: #cccccc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.25s ease;
+        }
+
+        .social-circle-btn:hover {
+            background: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff;
+        }
+
+        .footer-contact-details p {
+            font-size: 14.5px;
+            color: #a3a3a3;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-contact-details a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact-details a:hover {
+            color: var(--theme-lime);
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 13.5px;
+            color: #777777;
+        }
+
+        .scroll-top-btn {
+            width: 44px;
+            height: 44px;
+            background-color: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .blog-cards-grid { grid-template-columns: 1fr 1fr; }
+            .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .footer-tagline-hero { font-size: 28px; }
+            .footer-main-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-menu { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .blog-cards-grid { grid-template-columns: 1fr; }
+        }
+
+/* =========================================================
+   BLOG LISTING (BLOG.HTML) MOBILE RESPONSIVE STYLES
+   ========================================================= */
+
+/* Prevent horizontal scroll wobble */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Base Header Setup */
+/* Base Header Layout */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow: visible !important;
+}
+
+.nav-logo img, .drawer-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Desktop Menu & Distinct Divider Lines */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 16px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 16px;
+    background-color: #94a3b8; /* Crisp Slate Gray */
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #111827;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.mobile-drawer-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 78%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 30px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.drawer-menu-list {
+    list-style: none;
+    padding: 24px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.drawer-menu-list li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+}
+
+.drawer-footer {
+    padding-top: 24px;
+}
+
+.drawer-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-cta-item {
+        display: block !important;
+        width: auto !important;
+        margin-top: 12px !important;
+    }
+
+    .mobile-cta-item .nav-btn {
+        width: auto !important;
+        padding: 9px 20px !important;
+        border-radius: 25px !important;
+        display: inline-flex !important;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 22px 24px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    .nav-menu.is-active {
+        display: flex !important;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 8px 0;
+        font-size: 16px;
+    }
+
+    /* Page Banner / Hero Header */
+    .blog-header,
+    .page-title-area,
+    .hero-banner {
+        padding: 40px 16px 20px !important;
+        text-align: center;
+    }
+
+    .blog-header h1,
+    .page-title-area h1 {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* Layout Stack (Posts + Sidebar) */
+    .blog-section,
+    .blog-grid-layout,
+    .main-blog-container {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px 16px 50px !important;
+        gap: 36px !important;
+    }
+
+    .blog-posts-column,
+    .blog-list-left {
+        width: 100% !important;
+    }
+
+    .blog-sidebar-column,
+    .blog-sidebar-right {
+        width: 100% !important;
+        position: static !important;
+    }
+
+    /* Blog Card Formatting */
+    .blog-card,
+    .post-card,
+    .blog-item {
+        width: 100% !important;
+        margin-bottom: 28px !important;
+    }
+
+    .blog-card img,
+    .post-thumb img {
+        width: 100% !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        border-radius: 10px;
+    }
+
+    .blog-card-title,
+    .post-title {
+        font-size: 20px !important;
+        line-height: 1.35 !important;
+        margin-top: 12px !important;
+    }
+
+    .blog-meta-info {
+        font-size: 13px !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    /* Widgets & Search */
+    .widget,
+    .sidebar-card {
+        padding: 20px 16px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .search-form input {
+        width: 100% !important;
+    }
+
+    /* Pagination */
+    .pagination-wrapper,
+    .blog-pagination {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 24px !important;
+    }
+}
+/* =========================================================
+   TOP NAVBAR & MOBILE SIDE-DRAWER STYLES
+   ========================================================= */
+
+/* Container Spacing */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* Single-Line Desktop Menu */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap; /* Prevents 2-line wrapping */
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Forces text to stay on one line */
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 13.5px; /* Sized to fit all 7 links cleanly */
+    font-weight: 600;
+    padding: 6px 12px; /* Balanced horizontal padding */
+    display: inline-block;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+/* Crisp Vertical Dividers */
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 14px;
+    background-color: #94a3b8;
+}
+
+/* Get In Touch Button */
+.desktop-cta {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-cta .nav-btn {
+    background: #0f172a;
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.desktop-cta .nav-btn:hover {
+    background: #1e293b;
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 1024px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none !important;
+    }
+
+    .mobile-menu-toggle {
+        display: block !important;
+    }
+}
+
+
+/* =========================================================
+   FORCE DESKTOP "GET IN TOUCH" BUTTON TO DISPLAY
+   ========================================================= */
+
+/* Ensure wrapper is active on desktop */
+.site-header .desktop-cta,
+header .desktop-cta {
+    display: flex !important;
+    align-items: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure the button link inside is rendered with explicit sizing */
+.site-header .desktop-cta .nav-btn,
+header .desktop-cta .nav-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    padding: 10px 22px !important;
+    border-radius: 25px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Hide only when screen is 900px or below */
+@media (max-width: 900px) {
+    .site-header .desktop-cta,
+    header .desktop-cta {
+        display: none !important;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <!-- Top Navbar -->
+<!-- Top Navbar -->
+<!-- Top Navbar -->
+<header class="site-header">
+    <div class="nav-container">
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="nav-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+
+        <!-- Desktop Nav -->
+        <ul class="desktop-nav-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Our Services</a></li>
+            <li><a href="{% url 'blog' %}" class="active">Blog Standard</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/join/">Join PWBL</a></li>
+            <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+        </ul>
+
+        <!-- Get In Touch Button -->
+        <div class="desktop-cta">
+            <a href="{% url 'contact' %}" class="nav-btn">Get In Touch</a>
+        </div>
+
+        <!-- Mobile Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuOpen" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Drawer Backdrop & Panel -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="mobile-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <a href="{% url 'home' %}" class="drawer-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+        <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="drawer-menu-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Our Services</a></li>
+        <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/join/">Join PWBL</a></li>
+        <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+        <a href="{% url 'contact' %}" class="drawer-cta-btn">Get In Touch</a>
+    </div>
+</aside>
+
+    <!-- Hero Banner -->
+    <section class="blog-hero-banner">
+        <div class="container blog-hero-content">
+            <h1>Insights & Updates</h1>
+            <p>Frontier ideas on technology transfer, clean energy, and sustainable global innovation.</p>
+        </div>
+    </section>
+
+    <!-- Dynamic Blog Grid -->
+    <section class="container blog-section">
+        <div class="blog-cards-grid">
+            {% for post in posts %}
+            <article class="blog-post-card">
+                <div class="blog-post-thumb">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=800&auto=format&fit=crop" alt="{{ post.title }}">
+                    {% endif %}
+                    <span class="blog-post-badge">{{ post.category }}</span>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-date">
+                        <i class="far fa-calendar-alt"></i> {{ post.published_date|date:"F d, Y" }}
+                    </div>
+                    <h3 class="blog-post-title">
+                        <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                    </h3>
+                    <p class="blog-post-summary">{{ post.summary }}</p>
+                    <a href="{% url 'blog_detail' post.slug %}" class="blog-read-link">
+                        Read Full Story <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            {% empty %}
+            <!-- Default placeholder cards shown if no posts have been created yet -->
+            <article class="blog-post-card">
+                <div class="blog-post-thumb">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop" alt="Water Innovation">
+                    <span class="blog-post-badge">Water</span>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-date"><i class="far fa-calendar-alt"></i> August 2026</div>
+                    <h3 class="blog-post-title"><a href="#">Scalable Desalination & Clean Water Stewardship</a></h3>
+                    <p class="blog-post-summary">How membrane innovation and advanced recovery systems are addressing industrial water scarcity globally.</p>
+                    <a href="{% url 'contact' %}" class="blog-read-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-post-card">
+                <div class="blog-post-thumb">
+                    <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=800&auto=format&fit=crop" alt="Clean Energy">
+                    <span class="blog-post-badge">Energy</span>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-date"><i class="far fa-calendar-alt"></i> August 2026</div>
+                    <h3 class="blog-post-title"><a href="#">The Next Phase of Renewable Thermal Recovery</a></h3>
+                    <p class="blog-post-summary">Integrating grid-scale battery architectures and thermal optimization into manufacturing hubs.</p>
+                    <a href="{% url 'contact' %}" class="blog-read-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="blog-post-card">
+                <div class="blog-post-thumb">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop" alt="Digital Sky">
+                    <span class="blog-post-badge">Digital</span>
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-date"><i class="far fa-calendar-alt"></i> August 2026</div>
+                    <h3 class="blog-post-title"><a href="#">Satellite Connectivity for Emerging Trade Routes</a></h3>
+                    <p class="blog-post-summary">Leveraging cloud edge networks and spatial data models to modernize legacy supply channels.</p>
+                    <a href="{% url 'contact' %}" class="blog-read-link">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <!-- Top Row -->
+        <div class="footer-top-row">
+            <div class="footer-brand-logo">
+                <img src="https://pwbl.in/wp-content/uploads/2025/01/Asset-4@2x.png" alt="PWBL">
+            </div>
+            <div class="footer-tagline-hero">
+                Innovating Today for a Sustainable Future
+            </div>
+        </div>
+
+        <!-- Main 3-Column Grid -->
+        <div class="footer-main-grid">
+            
+            <!-- Column 1: Newsletter -->
+            <div class="footer-newsletter-wrap">
+                <h4 class="footer-heading-text">Newsletter Signup</h4>
+                <form class="footer-newsletter-form" onsubmit="handleNewsletterSubmit(event, this)">
+                    {% csrf_token %}
+                    <div class="newsletter-input-box">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Enter Your Email Address" required>
+                        <button type="submit" class="newsletter-submit-btn"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <label class="privacy-check-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span>
+                    </label>
+                    <div class="newsletter-feedback" style="font-size: 13px; margin-top: -12px; margin-bottom: 15px; display: none;"></div>
+                </form>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fas fa-globe"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Navigation Menu -->
+            <div>
+                <h4 class="footer-heading-text">Menu</h4>
+                <ul class="footer-links-list">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'join' %}">Join PWBL</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact / Say Hello -->
+            <div class="footer-contact-details">
+                <h4 class="footer-heading-text">Say Hello</h4>
+                <p><a href="mailto:admin@pwbl.in">admin@pwbl.in</a></p>
+                <p>Jaipur, Rajasthan, India</p>
+                <p>+91 96025 70498</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-row">
+            <div>PWBL &copy; {% now "Y" %}. All Rights Reserved.</div>
+            <a href="#" class="scroll-top-btn" title="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+<script>
+function handleNewsletterSubmit(e, form) {
+    e.preventDefault();
+    const emailInput = form.querySelector('input[type="email"]');
+    const feedback = form.querySelector('.newsletter-feedback');
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]') ? form.querySelector('[name=csrfmiddlewaretoken]').value : '';
+
+    const formData = new FormData();
+    formData.append('email', emailInput.value);
+
+    fetch("{% url 'newsletter_subscribe' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        feedback.style.display = 'block';
+        feedback.style.color = (data.status === 'success' || data.status === 'info') ? '#10b981' : '#ef4444';
+        feedback.innerText = data.message;
+        if (data.status === 'success') {
+            emailInput.value = '';
+        }
+    })
+    .catch(() => {
+        feedback.style.display = 'block';
+        feedback.style.color = '#ef4444';
+        feedback.innerText = 'Unable to subscribe right now. Please try again later.';
+    });
+}
+</script>
+<script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer && backdrop) {
+                drawer.classList.toggle('open');
+                backdrop.classList.toggle('open');
+            }
+        }
+    </script>
+
+<script>
+    const openBtn = document.getElementById('mobileMenuOpen');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    const drawer = document.getElementById('sideDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawer.classList.add('is-open');
+            backdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('is-open');
+            backdrop.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body>
+</html>

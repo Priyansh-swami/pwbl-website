@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Server Error – PWBL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+        body { background:#f7f9f8; color:#171717; display:flex; align-items:center; justify-content:center; min-height:100vh; text-align:center; padding:20px; }
+        .error-card { background:#fff; padding:60px 40px; border-radius:16px; border:1px solid #e2e8f0; max-width:550px; width:100%; box-shadow:0 8px 30px rgba(0,0,0,0.04); }
+        h1 { font-family:'Space Grotesk', sans-serif; font-size:96px; font-weight:800; color:#ef4444; line-height:1; margin-bottom:10px; }
+        h2 { font-family:'Space Grotesk', sans-serif; font-size:24px; font-weight:700; margin-bottom:12px; }
+        p { color:#64748b; font-size:15px; margin-bottom:30px; line-height:1.6; }
+        .btn-home { background:#111; color:#fff; padding:12px 32px; border-radius:30px; text-decoration:none; font-weight:600; font-size:14px; transition:all 0.25s ease; display:inline-block; }
+        .btn-home:hover { background:#b3cc19; color:#111; transform:translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div class="error-card">
+        <h1>500</h1>
+        <h2>Internal Server Error</h2>
+        <p>Something went wrong on our end. Our technical team has been notified. Please try again in a few moments.</p>
+        <a href="{% url 'home' %}" class="btn-home"><i class="fas fa-arrow-left" style="margin-right:8px;"></i> Return to Homepage</a>
+    </div>
+<script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer && backdrop) {
+                drawer.classList.toggle('open');
+                backdrop.classList.toggle('open');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1482 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events – Panchtatva Worldwide Business</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <style>
+        :root {
+            --theme-bg-pastel: #f7f9f8;
+            --theme-bg-card: #ffffff;
+            --theme-bg-dark: #111111;
+            --theme-text-dark: #171717;
+            --theme-text-muted: #64748b;
+            --theme-lime: #b3cc19;
+            --theme-emerald: #10b981;
+            --theme-yellow: #ffc816;
+            --theme-blue: #0099ff;
+            --theme-border-subtle: #e2e8f0;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-space: 'Space Grotesk', sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-poppins);
+        }
+
+        body {
+            background-color: var(--theme-bg-pastel);
+            color: var(--theme-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Navbar */
+        .site-header {
+            padding: 24px 0;
+            background: rgba(247, 249, 248, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--theme-border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            max-height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--theme-text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--theme-emerald);
+            border-bottom: 2px solid var(--theme-emerald);
+            padding-bottom: 4px;
+        }
+
+        .btn-touch {
+            background-color: var(--theme-bg-dark);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.25s ease;
+        }
+
+        .btn-touch:hover {
+            background-color: var(--theme-lime);
+            color: var(--theme-bg-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Banner */
+        .events-hero-banner {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop') center center / cover no-repeat;
+            padding: 110px 0 100px;
+            text-align: center;
+        }
+
+        .events-hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(247, 249, 248, 0.92);
+            backdrop-filter: blur(2px);
+        }
+
+        .events-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .events-hero-content h1 {
+            font-family: var(--font-space);
+            font-size: 54px;
+            font-weight: 800;
+            color: #171717;
+            margin-bottom: 8px;
+        }
+
+        .events-hero-arrow {
+            font-size: 20px;
+            color: #777777;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Layout Grid */
+        .events-main-section {
+            padding: 60px 0 120px;
+        }
+
+        .events-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        /* Filter Row */
+        .events-filter-card {
+            margin-bottom: 35px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .filter-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .filter-input-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d5ded9;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            color: #475569;
+            background: #ffffff;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .filter-input-control:focus {
+            border-color: var(--theme-blue);
+        }
+
+        /* Status Tab Nav */
+        .events-tabs-nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-space);
+            font-size: 20px;
+            font-weight: 800;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 6px 14px;
+            border-radius: 6px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            color: #4d5b03;
+            background-color: rgba(179, 204, 25, 0.2);
+        }
+
+        .tab-badge-count {
+            font-size: 12px;
+            background: #171717;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .tab-btn.active .tab-badge-count {
+            background: #4d5b03;
+        }
+
+        /* Events Cards Grid */
+        .events-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .event-dir-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-dir-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .event-poster-wrap {
+            position: relative;
+            height: 220px;
+            background-color: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .event-poster-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .date-floating-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 8px 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            line-height: 1.1;
+        }
+
+        .date-floating-badge .date-day {
+            font-family: var(--font-space);
+            font-size: 22px;
+            font-weight: 800;
+            color: #171717;
+            display: block;
+        }
+
+        .date-floating-badge .date-month {
+            font-size: 11px;
+            font-weight: 800;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .event-status-pill {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-upcoming {
+            background: var(--theme-lime);
+            color: #111111;
+        }
+
+        .status-past {
+            background: rgba(0,0,0,0.75);
+            color: #ffffff;
+        }
+
+        .event-details-tinted {
+            background-color: #fefce8;
+            padding: 22px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #fef08a;
+        }
+
+        .event-dir-title {
+            font-family: var(--font-space);
+            font-size: 18px;
+            font-weight: 800;
+            color: #171717;
+            line-height: 1.35;
+            margin-bottom: 12px;
+        }
+
+        .event-info-line {
+            font-size: 13px;
+            color: #475569;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .event-info-line i {
+            color: #64748b;
+            margin-top: 3px;
+            font-size: 13px;
+        }
+
+        .event-card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        .event-pill-tag {
+            padding: 4px 12px;
+            background: #e2e8f0;
+            color: #334155;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-event-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: #171717;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .btn-event-link:hover {
+            color: var(--theme-emerald);
+        }
+
+        /* Sidebar Widgets */
+        .events-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sidebar-widget h3 {
+            font-family: var(--font-space);
+            font-size: 20px;
+            font-weight: 800;
+            color: #171717;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-search-box {
+            position: relative;
+        }
+
+        .sidebar-search-box input {
+            width: 100%;
+            padding: 13px 18px 13px 42px;
+            border: 1px solid #d5ded9;
+            border-radius: 30px;
+            font-size: 14px;
+            color: #171717;
+            background: #ffffff;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-search-box input:focus {
+            border-color: var(--theme-blue);
+            box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.12);
+        }
+
+        .sidebar-search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .recent-posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .recent-post-item {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .recent-post-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: #e2e8f0;
+        }
+
+        .recent-post-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .recent-post-meta {
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .recent-post-title {
+            font-family: var(--font-space);
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #171717;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .recent-post-title:hover {
+            color: var(--theme-emerald);
+        }
+
+        .tags-cloud-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-pill-btn {
+            background: #ffffff;
+            border: 1px solid #d5ded9;
+            color: #475569;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .tag-pill-btn:hover {
+            border-color: var(--theme-lime);
+            background: var(--theme-lime);
+            color: #111111;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #111111;
+            color: #999999;
+            padding: 80px 0 35px;
+            position: relative;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 50px;
+        }
+
+        .footer-brand-logo img {
+            max-height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-tagline-hero {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 700;
+            color: #3b3b3b;
+            max-width: 480px;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-heading-text {
+            font-family: var(--font-space);
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-newsletter-wrap {
+            max-width: 380px;
+        }
+
+        .newsletter-input-box {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            transition: border-color 0.25s ease;
+        }
+
+        .newsletter-input-box:focus-within {
+            border-bottom-color: #ffffff;
+        }
+
+        .newsletter-input-box i {
+            color: #888888;
+            margin-right: 12px;
+            font-size: 15px;
+        }
+
+        .newsletter-input-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 14.5px;
+            width: 100%;
+        }
+
+        .newsletter-input-box input::placeholder {
+            color: #777777;
+        }
+
+        .newsletter-submit-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .newsletter-submit-btn:hover {
+            transform: translateX(4px);
+            color: var(--theme-lime);
+        }
+
+        .privacy-check-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .privacy-check-label input {
+            accent-color: var(--theme-lime);
+            cursor: pointer;
+        }
+
+        .privacy-check-label a {
+            color: #cccccc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.25s ease;
+        }
+
+        .social-circle-btn:hover {
+            background: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff;
+        }
+
+        .footer-contact-details p {
+            font-size: 14.5px;
+            color: #a3a3a3;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-contact-details a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact-details a:hover {
+            color: var(--theme-lime);
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 13.5px;
+            color: #777777;
+        }
+
+        .scroll-top-btn {
+            width: 44px;
+            height: 44px;
+            background-color: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .events-layout-grid { grid-template-columns: 1fr; }
+            .filter-row, .filter-row-2col { grid-template-columns: 1fr; }
+            .events-cards-grid { grid-template-columns: 1fr; }
+            .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .footer-tagline-hero { font-size: 28px; }
+            .footer-main-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-menu { display: none; }
+        }
+/* =========================================================
+   EVENTS PAGE MOBILE RESPONSIVE STYLES
+   ========================================================= */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Header & Drawer Styles */
+/* Base Header Layout */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo img, .drawer-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Desktop Menu & Distinct Divider Lines */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 16px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 16px;
+    background-color: #94a3b8; /* Crisp Slate Gray */
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #111827;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.mobile-drawer-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 78%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 30px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.drawer-menu-list {
+    list-style: none;
+    padding: 24px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.drawer-menu-list li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+}
+
+.drawer-footer {
+    padding-top: 24px;
+}
+
+.drawer-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+
+    /* Hero / Page Title */
+    .events-hero, .events-header {
+        padding: 40px 16px 20px !important;
+        text-align: center;
+    }
+
+    .events-hero h1, .events-header h1 {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+    }
+
+    .events-hero p, .events-header p {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Filter & Category Tabs (Horizontal Scroll on Mobile) */
+    .event-filters, .category-tabs {
+        display: flex !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        gap: 10px !important;
+        padding: 10px 16px !important;
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+
+    .event-filters::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+    }
+
+    .filter-btn, .tab-btn {
+        padding: 8px 18px !important;
+        font-size: 13.5px !important;
+        flex-shrink: 0;
+    }
+
+    /* Events Listing Grid / Stack */
+    .events-grid,
+    .events-container,
+    .events-list {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px 16px 50px !important;
+        gap: 24px !important;
+    }
+
+    .event-card, .event-item {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+    }
+
+    .event-card-img, .event-thumbnail {
+        width: 100% !important;
+        height: 200px !important;
+    }
+
+    .event-card-img img, .event-thumbnail img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .event-card-content, .event-details {
+        padding: 20px 16px !important;
+    }
+
+    .event-title {
+        font-size: 19px !important;
+        line-height: 1.35 !important;
+    }
+
+    .event-meta {
+        font-size: 13px !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    .event-action-btn, .register-btn {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+        padding: 12px 0 !important;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Top Navbar -->
+<!-- Top Navbar -->
+<header class="site-header">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="desktop-nav-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Our Services</a></li>
+            <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/join/">Join PWBL</a></li>
+            <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+        </ul>
+
+        <!-- Direct Contact Action -->
+        <div class="desktop-cta">
+            <a href="{% url 'contact' %}" class="nav-btn">Get In Touch</a>
+        </div>
+
+        <!-- Mobile Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuOpen" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Drawer Backdrop & Panel -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="mobile-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <a href="{% url 'home' %}" class="drawer-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+        <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="drawer-menu-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Our Services</a></li>
+        <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/join/">Join PWBL</a></li>
+        <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+        <a href="{% url 'contact' %}" class="drawer-cta-btn">Get In Touch</a>
+    </div>
+</aside>
+
+
+    <!-- Hero Banner -->
+    <section class="events-hero-banner">
+        <div class="container events-hero-content">
+            <h1>Events</h1>
+            <div class="events-hero-arrow"><i class="fas fa-chevron-down"></i></div>
+        </div>
+    </section>
+
+    <!-- Main Events Archive Section -->
+    <main class="container events-main-section">
+        <div class="events-layout-grid">
+            
+            <!-- Left Side: Tabs + Event Cards -->
+            <div>
+                <!-- Filter Bar -->
+                <div class="events-filter-card">
+                    <div class="filter-row">
+                        <input type="text" class="filter-input-control" placeholder="Keywords">
+                        <input type="text" class="filter-input-control" placeholder="Location">
+                        <select class="filter-input-control">
+                            <option>Select Date Range</option>
+                            <option>2026</option>
+                            <option>2025 Archive</option>
+                        </select>
+                    </div>
+                    <div class="filter-row-2col">
+                        <select class="filter-input-control">
+                            <option>Choose an Event Category</option>
+                            <option>Innovation & Entrepreneurship</option>
+                            <option>Technology Transfer</option>
+                            <option>Sustainability</option>
+                        </select>
+                        <select class="filter-input-control">
+                            <option>Choose an Event Type</option>
+                            <option>Conference</option>
+                            <option>Summit</option>
+                            <option>Workshop</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabs to switch between Upcoming and Archive -->
+                <div class="events-tabs-nav">
+                    <button class="tab-btn active" onclick="switchEventsTab('upcoming', this)">
+                        Upcoming Events <span class="tab-badge-count">{{ upcoming_events|length|default:"1" }}</span>
+                    </button>
+                    <button class="tab-btn" onclick="switchEventsTab('archive', this)">
+                        Event Archive / Past <span class="tab-badge-count">{{ past_events|length|default:"1" }}</span>
+                    </button>
+                </div>
+
+                <!-- 1. UPCOMING EVENTS TAB CONTENT -->
+                <div id="tab-upcoming" class="events-cards-grid">
+                    {% for event in upcoming_events %}
+                    <div class="event-dir-card">
+                        <div class="event-poster-wrap">
+                            {% if event.image %}
+                                <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="{{ event.title }}">
+                            {% endif %}
+                            <div class="date-floating-badge">
+                                <span class="date-day">{{ event.day_str }}</span>
+                                <span class="date-month">{{ event.month_str }}</span>
+                            </div>
+                            <span class="event-status-pill status-upcoming">Upcoming</span>
+                        </div>
+                        <div class="event-details-tinted">
+                            <h3 class="event-dir-title">{{ event.title }}</h3>
+                            <div class="event-info-line">
+                                <i class="far fa-clock"></i>
+                                <span>{{ event.date_str }}</span>
+                            </div>
+                            <div class="event-info-line">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>{{ event.location }}</span>
+                            </div>
+                            <div class="event-card-bottom">
+                                <span class="event-pill-tag">{{ event.event_type }}</span>
+                                <a href="{% url 'contact' %}" class="btn-event-link">Register &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <!-- Default Upcoming Event -->
+                    <div class="event-dir-card">
+                        <div class="event-poster-wrap">
+                            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop" alt="Panchtatva Global Tech Summit">
+                            <div class="date-floating-badge">
+                                <span class="date-day">18</span>
+                                <span class="date-month">NOV</span>
+                            </div>
+                            <span class="event-status-pill status-upcoming">Upcoming</span>
+                        </div>
+                        <div class="event-details-tinted">
+                            <h3 class="event-dir-title">Global Panchtatva Sustainability & Trade Summit 2026</h3>
+                            <div class="event-info-line">
+                                <i class="far fa-clock"></i>
+                                <span>2026-11-18 @ 09:30 AM - 05:00 PM</span>
+                            </div>
+                            <div class="event-info-line">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Jaipur International Centre, Rajasthan</span>
+                            </div>
+                            <div class="event-card-bottom">
+                                <span class="event-pill-tag">Summit</span>
+                                <a href="{% url 'contact' %}" class="btn-event-link">Register &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- 2. ARCHIVE / PAST EVENTS TAB CONTENT -->
+                <div id="tab-archive" class="events-cards-grid" style="display: none;">
+                    
+                    <!-- Original 2025 Event -->
+                    <div class="event-dir-card">
+                        <div class="event-poster-wrap">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="World Creativity and Innovation Day">
+                            <div class="date-floating-badge">
+                                <span class="date-day">20</span>
+                                <span class="date-month">APR</span>
+                            </div>
+                            <span class="event-status-pill status-past">Archive</span>
+                        </div>
+                        <div class="event-details-tinted">
+                            <h3 class="event-dir-title">World Creativity and Innovation Day & Award 2025</h3>
+                            <div class="event-info-line">
+                                <i class="far fa-clock"></i>
+                                <span>2025-04-20 @ 11:00 AM - 2025-04-20 @ 04:30 PM</span>
+                            </div>
+                            <div class="event-info-line">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Bhamashah State Data Centre Block-C, Jhalana Doongri, Jaipur</span>
+                            </div>
+                            <div class="event-card-bottom">
+                                <span class="event-pill-tag">Conference</span>
+                                <a href="{% url 'contact' %}" class="btn-event-link">View Recap &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% for event in past_events %}
+                    <div class="event-dir-card">
+                        <div class="event-poster-wrap">
+                            {% if event.image %}
+                                <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                            {% else %}
+                                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="{{ event.title }}">
+                            {% endif %}
+                            <div class="date-floating-badge">
+                                <span class="date-day">{{ event.day_str }}</span>
+                                <span class="date-month">{{ event.month_str }}</span>
+                            </div>
+                            <span class="event-status-pill status-past">Archive</span>
+                        </div>
+                        <div class="event-details-tinted">
+                            <h3 class="event-dir-title">{{ event.title }}</h3>
+                            <div class="event-info-line">
+                                <i class="far fa-clock"></i>
+                                <span>{{ event.date_str }}</span>
+                            </div>
+                            <div class="event-info-line">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>{{ event.location }}</span>
+                            </div>
+                            <div class="event-card-bottom">
+                                <span class="event-pill-tag">{{ event.event_type }}</span>
+                                <a href="{% url 'contact' %}" class="btn-event-link">View Recap &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar Widgets -->
+            <aside class="events-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Search</h3>
+                    <div class="sidebar-search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search ...">
+                    </div>
+                </div>
+
+                <!-- Dynamic Recent Posts from Database -->
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <div class="recent-posts-list">
+                        {% for post in recent_posts %}
+                        <div class="recent-post-item">
+                            <div class="recent-post-thumb">
+                                {% if post.image %}
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                                {% else %}
+                                    <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=300&auto=format&fit=crop" alt="{{ post.title }}">
+                                {% endif %}
+                            </div>
+                            <div>
+                                <div class="recent-post-meta">
+                                    {{ post.category|upper }} <span>• {{ post.published_date|date:"F d, Y" }}</span>
+                                </div>
+                                <a href="{% url 'blog_detail' post.slug %}" class="recent-post-title">{{ post.title }}</a>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p style="font-size: 14px; color: #94a3b8;">No recent blog posts found.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div class="tags-cloud-wrap">
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Best</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Brand</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Business</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Client</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Creative</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Design</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Featured</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Ideas</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Inspire</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Lifestyle</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Logo</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Media</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Model</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Modern</a>
+                        <a href="{% url 'blog' %}" class="tag-pill-btn">Startup</a>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <!-- Top Row -->
+        <div class="footer-top-row">
+            <div class="footer-brand-logo">
+                <img src="https://pwbl.in/wp-content/uploads/2025/01/Asset-4@2x.png" alt="PWBL">
+            </div>
+            <div class="footer-tagline-hero">
+                Innovating Today for a Sustainable Future
+            </div>
+        </div>
+
+        <!-- Main 3-Column Grid -->
+        <div class="footer-main-grid">
+            
+            <!-- Column 1: Newsletter -->
+            <div class="footer-newsletter-wrap">
+                <h4 class="footer-heading-text">Newsletter Signup</h4>
+                <form class="footer-newsletter-form" onsubmit="handleNewsletterSubmit(event, this)">
+                    {% csrf_token %}
+                    <div class="newsletter-input-box">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Enter Your Email Address" required>
+                        <button type="submit" class="newsletter-submit-btn"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <label class="privacy-check-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span>
+                    </label>
+                    <div class="newsletter-feedback" style="font-size: 13px; margin-top: -12px; margin-bottom: 15px; display: none;"></div>
+                </form>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fas fa-globe"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Navigation Menu -->
+            <div>
+                <h4 class="footer-heading-text">Menu</h4>
+                <ul class="footer-links-list">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'join' %}">Join PWBL</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact / Say Hello -->
+            <div class="footer-contact-details">
+                <h4 class="footer-heading-text">Say Hello</h4>
+                <p><a href="mailto:admin@pwbl.in">admin@pwbl.in</a></p>
+                <p>Jaipur, Rajasthan, India</p>
+                <p>+91 96025 70498</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-row">
+            <div>PWBL &copy; {% now "Y" %}. All Rights Reserved.</div>
+            <a href="#" class="scroll-top-btn" title="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+    <!-- Tab Switching Script -->
+    <script>
+        function switchEventsTab(tabName, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (tabName === 'upcoming') {
+                document.getElementById('tab-upcoming').style.display = 'grid';
+                document.getElementById('tab-archive').style.display = 'none';
+            } else {
+                document.getElementById('tab-upcoming').style.display = 'none';
+                document.getElementById('tab-archive').style.display = 'grid';
+            }
+        }
+    </script>
+<script>
+function handleNewsletterSubmit(e, form) {
+    e.preventDefault();
+    const emailInput = form.querySelector('input[type="email"]');
+    const feedback = form.querySelector('.newsletter-feedback');
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]') ? form.querySelector('[name=csrfmiddlewaretoken]').value : '';
+
+    const formData = new FormData();
+    formData.append('email', emailInput.value);
+
+    fetch("{% url 'newsletter_subscribe' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        feedback.style.display = 'block';
+        feedback.style.color = (data.status === 'success' || data.status === 'info') ? '#10b981' : '#ef4444';
+        feedback.innerText = data.message;
+        if (data.status === 'success') {
+            emailInput.value = '';
+        }
+    })
+    .catch(() => {
+        feedback.style.display = 'block';
+        feedback.style.color = '#ef4444';
+        feedback.innerText = 'Unable to subscribe right now. Please try again later.';
+    });
+}
+</script>
+<script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer && backdrop) {
+                drawer.classList.toggle('open');
+                backdrop.classList.toggle('open');
+            }
+        }
+    </script>
+<script>
+    const openBtn = document.getElementById('mobileMenuOpen');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    const drawer = document.getElementById('sideDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawer.classList.add('is-open');
+            backdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('is-open');
+            backdrop.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body>
+</html>

@@ -1,0 +1,1730 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us – PWBL</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <style>
+        :root {
+            --theme-bg-pastel: #f1f6f4;
+            --theme-bg-card: #ffffff;
+            --theme-bg-dark: #111720;
+            --theme-text-dark: #182230;
+            --theme-text-muted: #5e6d82;
+            --theme-lime: #b3cc19;
+            --theme-emerald: #10b981;
+            --theme-yellow: #ffc816;
+            --theme-blue: #3b82f6;
+            --theme-border-subtle: #dbe4e1;
+            --theme-border-dark: #222d3d;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-space: 'Space Grotesk', sans-serif;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-poppins);
+        }
+
+        body {
+            background-color: var(--theme-bg-pastel);
+            color: var(--theme-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(179, 204, 25, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.10) 0%, transparent 40%),
+                linear-gradient(to right, rgba(16, 24, 32, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 24, 32, 0.035) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1290px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Navbar */
+        .site-header {
+            padding: 24px 0;
+            background: rgba(241, 246, 244, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--theme-border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            max-height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--theme-text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--theme-emerald);
+        }
+
+        .btn-touch {
+            background-color: var(--theme-bg-dark);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-touch:hover {
+            background-color: var(--theme-lime);
+            color: var(--theme-bg-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Page Banner Header */
+        .page-header-wrap {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        .section-subtitle-tag {
+            color: var(--theme-lime);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .page-header-title {
+            font-family: var(--font-space);
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--theme-text-dark);
+            margin-bottom: 15px;
+        }
+
+        .page-header-desc {
+            font-size: 18px;
+            color: var(--theme-text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Mission & Overview Hero Grid */
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+            padding: 50px 0 90px;
+        }
+
+        .about-main-text h2 {
+            font-family: var(--font-space);
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 22px;
+            color: var(--theme-text-dark);
+        }
+
+        .about-main-text p {
+            font-size: 16px;
+            color: var(--theme-text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-image-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--theme-border-subtle);
+        }
+
+        .about-image-card img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Dark Strategic Value Section */
+        .strategic-banner {
+            background-color: var(--theme-bg-dark);
+            color: #ffffff;
+            padding: 90px 0;
+        }
+
+        .banner-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 60px;
+        }
+
+        .banner-title {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-top: 6px;
+        }
+
+        .strategic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .strategic-card {
+            background: #18202c;
+            border: 1px solid var(--theme-border-dark);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+        }
+
+        .strategic-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--theme-lime);
+        }
+
+        .strategic-icon-tag {
+            font-size: 32px;
+            color: var(--theme-lime);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .strategic-card h3 {
+            font-family: var(--font-space);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .strategic-card p {
+            color: #94a3b8;
+            font-size: 14.5px;
+            line-height: 1.7;
+        }
+
+        /* Performance Metrics Strip with Scroll Animation */
+        .metrics-section {
+            padding: 90px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .progress-group {
+            margin-bottom: 26px;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .progress-bar-bg {
+            background-color: #dbe4e1;
+            height: 7px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background-color: var(--theme-yellow);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Leadership / Core Values */
+        .values-section {
+            padding: 90px 0 110px;
+            background: rgba(235, 242, 239, 0.7);
+            border-top: 1px solid var(--theme-border-subtle);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--theme-bg-card);
+            border: 1px solid var(--theme-border-subtle);
+            border-radius: var(--radius-md);
+            padding: 30px 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--theme-emerald);
+        }
+
+        .value-card i {
+            font-size: 28px;
+            color: var(--theme-emerald);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .value-card h4 {
+            font-family: var(--font-space);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            color: var(--theme-text-muted);
+            font-size: 13.5px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #111111;
+            color: #999999;
+            padding: 80px 0 35px;
+            position: relative;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 50px;
+        }
+
+        .footer-brand-logo img {
+            max-height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-tagline-hero {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 700;
+            color: #3b3b3b;
+            max-width: 480px;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-heading-text {
+            font-family: var(--font-space);
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-newsletter-wrap {
+            max-width: 380px;
+        }
+
+        .newsletter-input-box {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            transition: border-color 0.25s ease;
+        }
+
+        .newsletter-input-box:focus-within {
+            border-bottom-color: #ffffff;
+        }
+
+        .newsletter-input-box i {
+            color: #888888;
+            margin-right: 12px;
+            font-size: 15px;
+        }
+
+        .newsletter-input-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 14.5px;
+            width: 100%;
+        }
+
+        .newsletter-input-box input::placeholder {
+            color: #777777;
+        }
+
+        .newsletter-submit-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .newsletter-submit-btn:hover {
+            transform: translateX(4px);
+            color: var(--theme-lime);
+        }
+
+        .privacy-check-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .privacy-check-label input {
+            accent-color: var(--theme-lime);
+            cursor: pointer;
+        }
+
+        .privacy-check-label a {
+            color: #cccccc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.25s ease;
+        }
+
+        .social-circle-btn:hover {
+            background: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff;
+        }
+
+        .footer-contact-details p {
+            font-size: 14.5px;
+            color: #a3a3a3;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-contact-details a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact-details a:hover {
+            color: var(--theme-lime);
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 13.5px;
+            color: #777777;
+        }
+
+        .scroll-top-btn {
+            width: 44px;
+            height: 44px;
+            background-color: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .about-hero-grid, .metrics-section { grid-template-columns: 1fr; }
+            .strategic-grid, .values-grid { grid-template-columns: 1fr; }
+            .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .footer-tagline-hero { font-size: 28px; }
+            .footer-main-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-menu { display: none; }
+        }
+/* --- SECTION 1: INNOVATION AT ITS CORE --- */
+.about-innovation-section {
+    width: 100%;
+    padding: 100px 0 80px;
+    background: #ffffff;
+}
+
+.about-innovation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.innovation-img-wrapper {
+    position: relative;
+    border-radius: 12px;
+}
+
+.sculpture-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.stats-floating-box {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    display: flex;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.stat-item {
+    padding: 24px 30px;
+    min-width: 150px;
+}
+
+.stat-dark {
+    background: #111111;
+    color: #ffffff;
+}
+
+.stat-lime {
+    background: #b3cc19;
+    color: #ffffff;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.about-subtag {
+    font-size: 12px;
+    font-weight: 800;
+    color: #171717;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.about-main-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 46px;
+    font-weight: 800;
+    color: #171717;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.about-desc-p {
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.about-check-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.about-check-list li {
+    font-size: 15px;
+    font-weight: 600;
+    color: #171717;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.about-check-list li i {
+    color: #4f46e5;
+    font-size: 14px;
+}
+
+.shaping-future-tag {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #444444;
+}
+
+/* --- SECTION 2: OUR MISSION & TEAM --- */
+.about-team-section {
+    width: 100%;
+    padding: 90px 0;
+    background: #fafafa;
+}
+
+.team-header-center {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.mission-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #171717;
+}
+
+.underlined-word {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.team-showcase-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.team-members-track {
+    display: flex;
+    gap: 20px;
+}
+
+.team-member-card {
+    position: relative;
+    width: 290px;
+    height: 360px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111111;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.team-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.team-member-card:hover .team-avatar {
+    transform: scale(1.04);
+}
+
+.team-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.85) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.team-social-icons {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-social-icons a {
+    color: #ffffff;
+    font-size: 15px;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.team-social-icons a:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.member-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.member-role {
+    font-size: 13px;
+    color: #d1d5db;
+}
+
+.team-circle-badge {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #171717;
+    text-decoration: none;
+    background: #ffffff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.team-circle-badge:hover {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+    transform: scale(1.06) rotate(-5deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* --- SECTION 3: AWARDS --- */
+.about-awards-section {
+    width: 100%;
+    padding: 90px 0 70px;
+    background: #ffffff;
+    border-bottom: 1px solid #eef2f6;
+}
+
+.awards-header {
+    margin-bottom: 50px;
+}
+
+.awards-3col-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.award-item-card {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 25px;
+}
+
+.award-top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.award-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #171717;
+}
+
+.award-year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #171717;
+}
+
+.award-category {
+    font-size: 13.5px;
+    color: #64748b;
+    margin-bottom: 14px;
+}
+
+.award-desc {
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.6;
+}
+
+/* --- SECTION 4: BLOG INTRO --- */
+.about-blog-intro-section {
+    width: 100%;
+    padding: 80px 0 40px;
+    background: #f7f9f8;
+}
+
+.blog-header-center {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .about-innovation-grid { grid-template-columns: 1fr; }
+    .sculpture-img { height: 380px; }
+    .team-showcase-row { flex-direction: column; align-items: flex-start; }
+    .team-members-track { flex-wrap: wrap; }
+    .awards-3col-grid { grid-template-columns: 1fr; gap: 30px; }
+    .mission-heading { font-size: 32px; }
+    .about-main-title { font-size: 34px; }
+}
+/* --- Mobile Toggle & Drawer Styles --- */
+.mobile-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #171717;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 3000;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.drawer-header .logo-img {
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+}
+
+.drawer-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #64748b;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.drawer-links {
+    list-style: none;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-links li a {
+    display: block;
+    padding: 12px 25px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #171717;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.drawer-links li a:hover {
+    background: #f1f5f9;
+    color: var(--theme-emerald);
+}
+
+.drawer-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 2500;
+}
+
+.drawer-backdrop.open {
+    display: block;
+}
+
+/* --- Mobile Breakpoints for Layout & Sections --- */
+@media (max-width: 992px) {
+    /* Header menu switch */
+    .nav-menu, .d-desktop-only {
+        display: none !important;
+    }
+    .mobile-toggle-btn {
+        display: block;
+    }
+
+    /* Section 1: Innovation Section */
+    .about-innovation-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .innovation-img-wrapper {
+        height: 340px;
+    }
+    .stats-floating-box {
+        position: static;
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+    }
+    .stat-item {
+        flex: 1;
+        padding: 16px 20px;
+        min-width: unset;
+    }
+    .stat-number {
+        font-size: 32px;
+    }
+    .about-main-title {
+        font-size: 32px;
+    }
+
+    /* Section 2: Team Section */
+    .mission-heading {
+        font-size: 28px;
+    }
+    .team-showcase-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .team-members-track {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+    .team-member-card {
+        width: 100%;
+        height: 380px;
+    }
+    .team-circle-badge {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* Section 3: Awards */
+    .awards-3col-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* Footer */
+    .footer-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .footer-tagline-hero {
+        font-size: 24px;
+    }
+    .footer-bottom-row {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+/* Base Header Layout */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo img, .drawer-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Desktop Menu & Distinct Divider Lines */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 16px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 16px;
+    background-color: #94a3b8; /* Crisp Slate Gray */
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #111827;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.mobile-drawer-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 78%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 30px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.drawer-menu-list {
+    list-style: none;
+    padding: 24px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.drawer-menu-list li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+}
+
+.drawer-footer {
+    padding-top: 24px;
+}
+
+.drawer-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <!-- Header Navbar -->
+    <!-- Top Navbar -->
+<header class="site-header">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="desktop-nav-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Our Services</a></li>
+            <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/join/">Join PWBL</a></li>
+            <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+        </ul>
+
+        <!-- Direct Contact Action -->
+        <div class="desktop-cta">
+            <a href="{% url 'contact' %}" class="nav-btn">Get In Touch</a>
+        </div>
+
+        <!-- Mobile Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuOpen" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Drawer Backdrop & Panel -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="mobile-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <a href="{% url 'home' %}" class="drawer-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+        <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="drawer-menu-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Our Services</a></li>
+        <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/join/">Join PWBL</a></li>
+        <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+        <a href="{% url 'contact' %}" class="drawer-cta-btn">Get In Touch</a>
+    </div>
+</aside>
+
+
+    <!-- Page Header Banner -->
+    <section class="page-header-wrap">
+        <div class="container">
+            <span class="section-subtitle-tag">Who We Are</span>
+            <h1 class="page-header-title">Connecting Global Technologies</h1>
+            <p class="page-header-desc">Empowering sustainable progress, international collaboration, and forward-thinking strategies from ideation to execution.</p>
+        </div>
+    </section>
+
+    <!-- Mission & Overview Grid -->
+    <div class="container about-hero-grid">
+        <div class="about-main-text">
+            <h2>Building a Better World Through Technology and Collaboration</h2>
+            <p>Panchtatva Worldwide Business Private Limited (PWBL) specializes in connecting global technologies to deliver impactful solutions for progress and peace.</p>
+            <p>From research to execution, we bring forward-thinking frameworks that transform industries and communities. Inspired by the five fundamental elements—Water, Sky, Air, Earth, and Fire—our mission bridges ecological harmony with digital and industrial evolution.</p>
+            <div style="margin-top: 30px;">
+                <a href="{% url 'contact' %}" class="btn-touch">Partner With Us</a>
+            </div>
+        </div>
+        <div class="about-image-card">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="PWBL Global Team Collaboration">
+        </div>
+    </div>
+
+    <!-- Dark Strategic Value Pillars -->
+    <section class="strategic-banner">
+        <div class="container">
+            <div class="banner-header">
+                <span class="section-subtitle-tag">Our Methodology</span>
+                <h2 class="banner-title">Our Three Pillars of Progress</h2>
+            </div>
+            <div class="strategic-grid">
+                <div class="strategic-card">
+                    <i class="fas fa-search strategic-icon-tag"></i>
+                    <h3>01. Discover Solutions</h3>
+                    <p>Identifying pressing global challenges and researching transformative technologies capable of solving localized and industrial problems.</p>
+                </div>
+                <div class="strategic-card">
+                    <i class="fas fa-handshake strategic-icon-tag"></i>
+                    <h3>02. Collaborate</h3>
+                    <p>Aligning international enterprises, institutional partners, and technical resources to design actionable, scalable strategies.</p>
+                </div>
+                <div class="strategic-card">
+                    <i class="fas fa-chart-line strategic-icon-tag"></i>
+                    <h3>03. Transform</h3>
+                    <p>Delivering measurable environmental transformations and sustainable economic outcomes for communities worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Performance Metrics -->
+    <div class="container metrics-section" id="about-metrics-box">
+        <div>
+            <span class="section-subtitle-tag">Our Impact Metrics</span>
+            <h2 style="font-family: var(--font-space); font-size: 34px; font-weight: 800; margin: 10px 0 20px; line-height: 1.25;">Proven Track Record of Excellence</h2>
+            <p style="color: var(--theme-text-muted); margin-bottom: 25px; line-height: 1.7;">Our data-driven operational model guarantees high efficiency across research, sustainability deployment, and multilateral cross-border alliances.</p>
+            <a href="mailto:admin@pwbl.in" style="color: var(--theme-emerald); font-weight: 700; font-size: 16px; text-decoration: none;">✉️ admin@pwbl.in</a>
+        </div>
+        <div>
+            <div class="progress-group">
+                <div class="progress-meta"><span>Technology Transfer & Innovation</span><span>90%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-progress="90%"></div></div>
+            </div>
+            <div class="progress-group">
+                <div class="progress-meta"><span>Sustainable Development Solutions</span><span>85%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-progress="85%"></div></div>
+            </div>
+            <div class="progress-group">
+                <div class="progress-meta"><span>Global Partnerships & Collaborations</span><span>88%</span></div>
+                <div class="progress-bar-bg"><div class="progress-fill" data-progress="88%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-subtitle-tag">Guiding Principles</span>
+                <h2 style="font-family: var(--font-space); font-size: 34px; font-weight: 800; margin-top: 6px;">The Principles That Drive Us</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Sustainability First</h4>
+                    <p>Every commercial innovation we deploy strictly complies with environmental preservation standards.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-globe-asia"></i>
+                    <h4>Global Reach</h4>
+                    <p>Operating across 12 world offices to facilitate frictionless international trade and tech transfer.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Pioneering Innovation</h4>
+                    <p>Constantly uncovering frontier breakthroughs in clean energy, agri-tech, and cloud ecosystems.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Dedicated Experts</h4>
+                    <p>Supported by a multidisciplinary team of 50+ researchers, engineers, and market strategists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Section 1: Innovation At Its Core -->
+<section class="about-innovation-section">
+    <div class="container">
+        <div class="about-innovation-grid">
+            
+            <!-- Left Sculpture Image with Counter Overlay -->
+            <div class="innovation-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Innovation Sculpture" class="sculpture-img">
+                
+                <div class="stats-floating-box">
+                    <div class="stat-item stat-dark">
+                        <span class="stat-label">Experts</span>
+                        <div class="stat-number">300+</div>
+                    </div>
+                    <div class="stat-item stat-lime">
+                        <span class="stat-label">World Offices</span>
+                        <div class="stat-number">12</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="innovation-content">
+                <span class="about-subtag">INNOVATION AT ITS CORE</span>
+                <h2 class="about-main-title">Technology That Drives Impact</h2>
+                <p class="about-desc-p">
+                    At Panchtatva Worldwide Business Private Limited (PWBL), we believe in revolutionizing industries through cutting-edge technology transfer, sustainable development, and global partnerships. Our expertise spans across multiple sectors, ensuring seamless integration of next-gen innovations into real-world solutions.
+                </p>
+
+                <ul class="about-check-list">
+                    <li><i class="fas fa-check"></i> Global Expertise</li>
+                    <li><i class="fas fa-check"></i> Sustainable Solutions</li>
+                    <li><i class="fas fa-check"></i> Technology-Driven Growth</li>
+                </ul>
+
+                <div class="shaping-future-tag">
+                    Shaping the Future, One Innovation at a Time. 🚀
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Section 2: Our Mission & Leadership Team -->
+<section class="about-team-section">
+    <div class="container">
+        <div class="team-header-center">
+            <span class="about-subtag">OUR MISSION</span>
+            <h2 class="mission-heading">
+                Ambitious Brands Strive for<br>
+                Creativity, Innovations, and<br>
+                Customers' <span class="underlined-word">Choice</span>
+            </h2>
+        </div>
+
+        <div class="team-showcase-row">
+            <!-- Team Members Container -->
+            <div class="team-members-track">
+                
+                <!-- Member 1: Dr. Ripu Ranjan Sinha -->
+                <div class="team-member-card">
+                    <img src="{% static 'images/team-ripu-ranjan.jpg' %}" alt="Dr. Ripu Ranjan Sinha" class="team-avatar">
+                    <div class="team-card-overlay">
+                        <div class="team-social-icons">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <h4 class="member-name">Dr. Ripu Ranjan Sinha</h4>
+                        <span class="member-role">Advisor & Director</span>
+                    </div>
+                </div>
+
+                <!-- Member 2: Mr. Vaibhav Chordia -->
+                <div class="team-member-card">
+                    <img src="{% static 'images/team-vaibhav.jpg' %}" alt="Mr. Vaibhav Chordia" class="team-avatar">
+                    <div class="team-card-overlay">
+                        <div class="team-social-icons">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                        <h4 class="member-name">Mr. Vaibhav Chordia</h4>
+                        <span class="member-role">Chief Executive Officer</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Clickable Side Circular Button -->
+            <a href="{% url 'team' %}" class="team-circle-badge" title="View Full Team">
+                <span>Our Team</span>
+                <i class="fas fa-arrow-right" style="margin-left: 8px; font-size: 13px;"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Our Awards -->
+<section class="about-awards-section">
+    <div class="container">
+        <div class="awards-header">
+            <span class="about-subtag">HUGE HONOR</span>
+            <h2 class="about-main-title">Our Awards</h2>
+        </div>
+
+        <div class="awards-3col-grid">
+            <!-- Award 1 -->
+            <div class="award-item-card">
+                <div class="award-top-line">
+                    <h3 class="award-title">Graphic Design</h3>
+                    <span class="award-year">2022</span>
+                </div>
+                <div class="award-category">UX/UI Design</div>
+                <p class="award-desc">
+                    Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.
+                </p>
+            </div>
+
+            <!-- Award 2 -->
+            <div class="award-item-card">
+                <div class="award-top-line">
+                    <h3 class="award-title">Photography</h3>
+                    <span class="award-year">2021</span>
+                </div>
+                <div class="award-category">Digital Design</div>
+                <p class="award-desc">
+                    Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.
+                </p>
+            </div>
+
+            <!-- Award 3 -->
+            <div class="award-item-card">
+                <div class="award-top-line">
+                    <h3 class="award-title">Illustration</h3>
+                    <span class="award-year">2020</span>
+                </div>
+                <div class="award-category">CSS & Animation</div>
+                <p class="award-desc">
+                    Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 4: Latest Blog Intro Header -->
+<section class="about-blog-intro-section">
+    <div class="container">
+        <div class="blog-header-center">
+            <span class="about-subtag">OUR BLOG</span>
+            <h2 class="about-main-title" style="font-size: 46px;">What's the Latest?</h2>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <!-- Top Row -->
+        <div class="footer-top-row">
+            <div class="footer-brand-logo">
+                <img src="https://pwbl.in/wp-content/uploads/2025/01/Asset-4@2x.png" alt="PWBL">
+            </div>
+            <div class="footer-tagline-hero">
+                Innovating Today for a Sustainable Future
+            </div>
+        </div>
+
+        <!-- Main 3-Column Grid -->
+        <div class="footer-main-grid">
+            
+            <!-- Column 1: Newsletter -->
+            <div class="footer-newsletter-wrap">
+                <h4 class="footer-heading-text">Newsletter Signup</h4>
+                <form class="footer-newsletter-form" onsubmit="handleNewsletterSubmit(event, this)">
+                    {% csrf_token %}
+                    <div class="newsletter-input-box">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Enter Your Email Address" required>
+                        <button type="submit" class="newsletter-submit-btn"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <label class="privacy-check-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span>
+                    </label>
+                    <div class="newsletter-feedback" style="font-size: 13px; margin-top: -12px; margin-bottom: 15px; display: none;"></div>
+                </form>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fas fa-globe"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Navigation Menu -->
+            <div>
+                <h4 class="footer-heading-text">Menu</h4>
+                <ul class="footer-links-list">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'join' %}">Join PWBL</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact / Say Hello -->
+            <div class="footer-contact-details">
+                <h4 class="footer-heading-text">Say Hello</h4>
+                <p><a href="mailto:admin@pwbl.in">admin@pwbl.in</a></p>
+                <p>Jaipur, Rajasthan, India</p>
+                <p>+91 96025 70498</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-row">
+            <div>PWBL &copy; {% now "Y" %}. All Rights Reserved.</div>
+            <a href="#" class="scroll-top-btn" title="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+    <!-- Interactive Progress Bars Script -->
+    <script>
+        const progressBars = document.querySelectorAll('.progress-fill');
+        let progressAnimated = false;
+
+        const animateProgressBars = () => {
+            progressBars.forEach(bar => {
+                const targetWidth = bar.getAttribute('data-progress');
+                bar.style.width = targetWidth;
+            });
+        };
+
+        const metricsSection = document.getElementById('about-metrics-box');
+        if (metricsSection) {
+            const progressObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !progressAnimated) {
+                    progressAnimated = true;
+                    animateProgressBars();
+                }
+            }, { threshold: 0.25 });
+
+            progressObserver.observe(metricsSection);
+        }
+    </script>
+<script>
+function handleNewsletterSubmit(e, form) {
+    e.preventDefault();
+    const emailInput = form.querySelector('input[type="email"]');
+    const feedback = form.querySelector('.newsletter-feedback');
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]') ? form.querySelector('[name=csrfmiddlewaretoken]').value : '';
+
+    const formData = new FormData();
+    formData.append('email', emailInput.value);
+
+    fetch("{% url 'newsletter_subscribe' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        feedback.style.display = 'block';
+        feedback.style.color = (data.status === 'success' || data.status === 'info') ? '#10b981' : '#ef4444';
+        feedback.innerText = data.message;
+        if (data.status === 'success') {
+            emailInput.value = '';
+        }
+    })
+    .catch(() => {
+        feedback.style.display = 'block';
+        feedback.style.color = '#ef4444';
+        feedback.innerText = 'Unable to subscribe right now. Please try again later.';
+    });
+}
+<script>
+    const openBtn = document.getElementById('mobileMenuOpen');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    const drawer = document.getElementById('sideDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawer.classList.add('is-open');
+            backdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('is-open');
+            backdrop.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body>
+</html>

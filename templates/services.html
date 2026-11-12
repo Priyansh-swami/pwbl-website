@@ -1,0 +1,1727 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services – Panchtatva Worldwide Business</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <style>
+        :root {
+            --theme-bg-pastel: #f7f9f8;
+            --theme-bg-card: #ffffff;
+            --theme-bg-dark: #111111;
+            --theme-text-dark: #171717;
+            --theme-text-muted: #64748b;
+            --theme-lime: #b3cc19;
+            --theme-emerald: #10b981;
+            --theme-yellow: #ffc816;
+            --theme-blue: #3b82f6;
+            --theme-border-subtle: #e2e8f0;
+            --theme-border-dark: #222d3d;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-space: 'Space Grotesk', sans-serif;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-poppins);
+        }
+
+        body {
+            background-color: var(--theme-bg-pastel);
+            color: var(--theme-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Navbar */
+        .site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            max-height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+        .nav-menu a {
+            color: var(--theme-text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--theme-emerald);
+            border-bottom: 2px solid var(--theme-emerald);
+            padding-bottom: 4px;
+        }
+
+        .btn-touch {
+            background-color: var(--theme-bg-dark);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.25s ease;
+        }
+
+        .btn-touch:hover {
+            background-color: var(--theme-lime);
+            color: var(--theme-bg-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Banner with Team Background */
+        .services-hero-banner {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop') center center / cover no-repeat;
+            padding: 110px 0 100px;
+            text-align: center;
+        }
+
+        .services-hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(247, 249, 248, 0.88);
+            backdrop-filter: blur(2px);
+        }
+
+        .services-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-hero-content h1 {
+            font-family: var(--font-space);
+            font-size: 52px;
+            font-weight: 800;
+            color: #171717;
+            margin-bottom: 12px;
+        }
+
+        .services-hero-arrow {
+            font-size: 20px;
+            color: #777777;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* "We Transform Ideas into Global Impact" Section */
+        .transform-section {
+            padding: 90px 0 100px;
+        }
+
+        .section-tag-upper {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #171717;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .transform-heading {
+            font-family: var(--font-space);
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #171717;
+            line-height: 1.15;
+            margin-bottom: 50px;
+            max-width: 900px;
+        }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .transform-img-box {
+            position: relative;
+            padding-bottom: 90px;
+        }
+
+        .transform-img-box img {
+            width: 88%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            display: block;
+            background-color: #e2e8f0;
+        }
+
+        /* Prominent Lime Green Stats Box */
+        .transform-stats-green-box {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #a8c414;
+            color: #ffffff;
+            padding: 38px 45px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            box-shadow: 0 16px 36px rgba(168, 196, 20, 0.45);
+            min-width: 470px;
+            z-index: 5;
+            border-radius: 4px;
+        }
+
+        .stat-col span.stat-label {
+            font-size: 18px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .stat-col .stat-number-display {
+            font-family: var(--font-space) !important;
+            font-size: 64px !important; /* Huge bold counter */
+            font-weight: 800 !important;
+            line-height: 1 !important;
+            margin-bottom: 8px !important;
+            color: #ffffff !important;
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .stat-col p.stat-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.92);
+            margin: 0;
+        }
+
+        .transform-text-side p {
+            color: #555555;
+            font-size: 16px;
+            line-height: 1.85;
+            margin-bottom: 22px;
+        }
+
+        /* 4 Services Grid */
+        .four-services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 60px 0 90px;
+            border-top: 1px solid #e5e9e7;
+            border-bottom: 1px solid #e5e9e7;
+        }
+
+        .service-tile {
+            position: relative;
+            padding: 20px 10px;
+        }
+
+        .service-tile-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .service-tile-icon {
+            font-size: 32px;
+            color: #4f46e5;
+        }
+
+        .service-tile h3 {
+            font-family: var(--font-space);
+            font-size: 20px;
+            font-weight: 700;
+            color: #171717;
+            line-height: 1.25;
+        }
+
+        .service-tile p {
+            color: #666666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            min-height: 45px;
+        }
+
+        .service-tile-arrow-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #171717;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .service-tile-arrow-btn:hover {
+            background: var(--theme-lime);
+            border-color: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-2px);
+        }
+
+        /* Five Elements Detailed Showcase Section */
+        .elements-detail-section {
+            padding: 110px 0;
+            background-color: var(--theme-bg-dark);
+            color: #ffffff;
+        }
+
+        .elements-detail-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 75px;
+        }
+
+        .elements-detail-header .section-subtitle-tag {
+            color: var(--theme-lime);
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+
+        .elements-detail-header h2 {
+            font-family: var(--font-space);
+            font-size: 44px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .element-detail-card {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 70px;
+            background: #18202c;
+            border: 1px solid var(--theme-border-dark);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            padding: 38px;
+            transition: all 0.35s ease;
+        }
+
+        .element-detail-card:hover {
+            border-color: var(--theme-lime);
+            transform: translateY(-4px);
+        }
+
+        .element-detail-card:nth-child(even) {
+            grid-template-columns: 1.15fr 1fr;
+        }
+
+        .element-detail-card:nth-child(even) .element-detail-img {
+            order: 2;
+        }
+
+        .element-detail-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .element-detail-img {
+            height: 390px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .element-detail-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .element-detail-card:hover .element-detail-img img {
+            transform: scale(1.05);
+        }
+
+        .element-detail-info {
+            padding: 10px 15px;
+        }
+
+        .element-detail-badge {
+            display: inline-block;
+            background: rgba(179, 204, 25, 0.16);
+            color: var(--theme-lime);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        /* Bold & Big Element Title */
+        .element-detail-info h3 {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: #ffffff;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .element-detail-info p {
+            color: #94a3b8;
+            font-size: 15.5px;
+            line-height: 1.8;
+            margin-bottom: 26px;
+        }
+
+        .element-detail-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .element-detail-features li {
+            font-size: 14.5px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .element-detail-features li i {
+            color: var(--theme-lime);
+            font-size: 16px;
+        }
+
+        /* "Call for Global Tech Collaboration" Form Section */
+        .collab-form-section {
+            padding: 100px 0 120px;
+        }
+
+        .collab-form-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .collab-form-header h2 {
+            font-family: var(--font-space);
+            font-size: 48px;
+            font-weight: 800;
+            color: #171717;
+            line-height: 1.2;
+        }
+
+        .collab-form-header .highlight-blue {
+            color: #4f46e5;
+            display: block;
+        }
+
+        .collab-form-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .collab-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+        .underlined-field {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #d5dad8;
+            padding-bottom: 10px;
+            transition: border-color 0.25s ease;
+        }
+
+        .underlined-field:focus-within {
+            border-bottom-color: #171717;
+        }
+
+        .underlined-field i {
+            color: #777777;
+            font-size: 15px;
+            margin-right: 12px;
+        }
+
+        .underlined-field input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14.5px;
+            color: #171717;
+            font-family: var(--font-poppins);
+        }
+
+        .underlined-field input::placeholder {
+            color: #777777;
+        }
+
+        .form-section-title {
+            font-family: var(--font-space);
+            font-size: 16px;
+            font-weight: 700;
+            color: #171717;
+            margin: 35px 0 15px;
+            display: block;
+        }
+
+        .checkbox-group-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .check-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #444444;
+            cursor: pointer;
+        }
+
+        .check-item input[type="checkbox"] {
+            accent-color: #4f46e5;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+        }
+
+        .deals-textarea-box {
+            width: 100%;
+            border: 1px solid #d5dad8;
+            border-radius: 6px;
+            padding: 16px;
+            font-size: 14.5px;
+            color: #171717;
+            outline: none;
+            min-height: 120px;
+            font-family: var(--font-poppins);
+            background: #ffffff;
+            margin-bottom: 35px;
+            transition: border-color 0.25s ease;
+        }
+
+        .deals-textarea-box:focus {
+            border-color: #4f46e5;
+        }
+
+        .agree-terms-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #555555;
+            margin: 25px 0 35px;
+            cursor: pointer;
+        }
+
+        .agree-terms-label a {
+            color: #4f46e5;
+            text-decoration: underline;
+        }
+
+        .btn-lime-submit {
+            background-color: var(--theme-lime);
+            color: #ffffff;
+            border: none;
+            padding: 14px 38px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(179, 204, 25, 0.4);
+            transition: all 0.25s ease;
+        }
+
+        .btn-lime-submit:hover {
+            background-color: #9cb315;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #111111;
+            color: #999999;
+            padding: 80px 0 35px;
+            position: relative;
+        }
+
+        .footer-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 50px;
+        }
+
+        .footer-brand-logo img {
+            max-height: 70px;
+            width: auto;
+            display: block;
+        }
+
+        .footer-tagline-hero {
+            font-family: var(--font-space);
+            font-size: 38px;
+            font-weight: 700;
+            color: #3b3b3b;
+            max-width: 480px;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-main-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-heading-text {
+            font-family: var(--font-space);
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+
+        .footer-newsletter-wrap {
+            max-width: 380px;
+        }
+
+        .newsletter-input-box {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            transition: border-color 0.25s ease;
+        }
+
+        .newsletter-input-box:focus-within {
+            border-bottom-color: #ffffff;
+        }
+
+        .newsletter-input-box i {
+            color: #888888;
+            margin-right: 12px;
+            font-size: 15px;
+        }
+
+        .newsletter-input-box input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 14.5px;
+            width: 100%;
+        }
+
+        .newsletter-input-box input::placeholder {
+            color: #777777;
+        }
+
+        .newsletter-submit-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: transform 0.2s ease;
+        }
+
+        .newsletter-submit-btn:hover {
+            transform: translateX(4px);
+            color: var(--theme-lime);
+        }
+
+        .privacy-check-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .privacy-check-label input {
+            accent-color: var(--theme-lime);
+            cursor: pointer;
+        }
+
+        .privacy-check-label a {
+            color: #cccccc;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-circle-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.25s ease;
+        }
+
+        .social-circle-btn:hover {
+            background: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list a:hover {
+            color: #ffffff;
+        }
+
+        .footer-contact-details p {
+            font-size: 14.5px;
+            color: #a3a3a3;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-contact-details a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact-details a:hover {
+            color: var(--theme-lime);
+        }
+
+        .footer-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 13.5px;
+            color: #777777;
+        }
+
+        .scroll-top-btn {
+            width: 44px;
+            height: 44px;
+            background-color: #1c1c1c;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: var(--theme-lime);
+            color: #111111;
+            transform: translateY(-3px);
+        }
+
+.nav-logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14.5px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: #5850ec;
+}
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 10px 22px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s ease;
+}
+.nav-btn:hover {
+    background: #5850ec;
+}
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #0f172a;
+    cursor: pointer;
+    padding: 6px;
+}
+.mobile-cta-item {
+    display: none;
+}
+
+
+.element-btn-discover {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.element-btn-discover:hover {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border-color: #ffffff !important;
+    transform: translateX(4px);
+}
+
+
+
+       @media (max-width: 992px) {
+            .transform-grid { grid-template-columns: 1fr; }
+            .transform-img-box img { width: 100%; }
+            .transform-stats-green-box { position: relative; min-width: 100%; margin-top: 20px; }
+            .four-services-grid { grid-template-columns: 1fr 1fr; }
+            .element-detail-card, .element-detail-card:nth-child(even) { grid-template-columns: 1fr; }
+            .element-detail-card:nth-child(even) .element-detail-img { order: 0; }
+            .element-detail-features { grid-template-columns: 1fr; }
+            .collab-row-2col { grid-template-columns: 1fr; }
+            .footer-top-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .footer-tagline-hero { font-size: 28px; }
+            .footer-main-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-menu { display: none; }
+        }
+
+        @media (max-width: 576px) {
+            .four-services-grid { grid-template-columns: 1fr; }
+            .transform-stats-green-box { grid-template-columns: 1fr; }
+        }
+
+/* Mobile & Tablet Styles */
+@media (max-width: 860px) {
+    .mobile-menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .desktop-cta {
+        display: none; /* Hide desktop button to avoid clutter */
+    }
+
+    .mobile-cta-item {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .nav-menu {
+        display: none; /* Hidden until hamburger is clicked */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 20px 24px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Open Class added via JavaScript */
+    .nav-menu.is-active {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 6px 0;
+        font-size: 16px;
+    }
+}
+/* =========================================================
+   TOP NAVBAR & MOBILE SIDE-DRAWER STYLES
+   ========================================================= */
+
+/* Base Header Layout */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo img, .drawer-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Desktop Menu & Distinct Divider Lines */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 16px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 16px;
+    background-color: #94a3b8; /* Crisp Slate Gray */
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #111827;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.mobile-drawer-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 78%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 30px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.drawer-menu-list {
+    list-style: none;
+    padding: 24px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.drawer-menu-list li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+}
+
+.drawer-footer {
+    padding-top: 24px;
+}
+
+.drawer-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+   <!-- Header / Navbar -->
+<!-- Mobile-Ready Header / Navbar -->
+<!-- Top Navbar -->
+<!-- Top Navbar -->
+<header class="site-header">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="desktop-nav-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Our Services</a></li>
+            <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/join/">Join PWBL</a></li>
+            <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+        </ul>
+
+        <!-- Direct Contact Action -->
+        <div class="desktop-cta">
+            <a href="{% url 'contact' %}" class="nav-btn">Get In Touch</a>
+        </div>
+
+        <!-- Mobile Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuOpen" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Drawer Backdrop & Panel -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="mobile-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <a href="{% url 'home' %}" class="drawer-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+        <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="drawer-menu-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Our Services</a></li>
+        <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/join/">Join PWBL</a></li>
+        <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+        <a href="{% url 'contact' %}" class="drawer-cta-btn">Get In Touch</a>
+    </div>
+</aside>
+
+
+    <!-- 1. Hero Header Banner -->
+    <section class="services-hero-banner">
+        <div class="container services-hero-content">
+            <h1>Our Services</h1>
+            <div class="services-hero-arrow"><i class="fas fa-chevron-down"></i></div>
+        </div>
+    </section>
+
+    <!-- 2. "We Transform Ideas into Global Impact" -->
+    <section class="container transform-section">
+        <span class="section-tag-upper">Empowering Innovations</span>
+        <h2 class="transform-heading">We Transform Ideas into Global Impact</h2>
+
+        <div class="transform-grid">
+            <!-- Left Side: Reliable Image + Huge Lime Stats Box -->
+            <div class="transform-img-box">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop" alt="PWBL Team Collaboration">
+                
+                <div class="transform-stats-green-box" id="services-stats-box">
+                    <div class="stat-col">
+                        <span class="stat-label">People</span>
+                        <div class="stat-number-display"><span class="fast-counter" data-target="100">0</span>+</div>
+                        <p class="stat-desc">Dedicated Expert Team</p>
+                    </div>
+                    <div class="stat-col">
+                        <span class="stat-label">World Offices</span>
+                        <div class="stat-number-display"><span class="fast-counter" data-target="16">0</span></div>
+                        <p class="stat-desc">Global Presence</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Descriptive Text -->
+            <div class="transform-text-side">
+                <p>At PWBL, we specialize in bridging the gap between groundbreaking ideas and real-world implementation. Our focus is on empowering businesses and governments with cutting-edge solutions that drive growth, sustainability, and progress.</p>
+                
+                <p>Our expertise lies in delivering end-to-end services across training, technology transfer, marketing, sales, and distribution. By leveraging a global network of experts and partnerships, we ensure that every solution we provide creates meaningful, measurable, and lasting impact.</p>
+                
+                <p>Let us guide you toward transformative innovations that shape a better tomorrow.</p>
+            </div>
+        </div>
+
+        <!-- 3. Four Services Grid -->
+        <div class="four-services-grid">
+            <div class="service-tile">
+                <div class="service-tile-top">
+                    <i class="fas fa-cubes service-tile-icon"></i>
+                    <h3>Training</h3>
+                </div>
+                <p>Empowering professionals with future-ready skills.</p>
+                <a href="#collab-form" class="service-tile-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-tile">
+                <div class="service-tile-top">
+                    <i class="fas fa-layer-group service-tile-icon"></i>
+                    <h3>Technology Transfer</h3>
+                </div>
+                <p>Bringing innovations to practical implementation.</p>
+                <a href="#collab-form" class="service-tile-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-tile">
+                <div class="service-tile-top">
+                    <i class="fas fa-project-diagram service-tile-icon"></i>
+                    <h3>Sales and Distribution</h3>
+                </div>
+                <p>Delivering advanced solutions with precision.</p>
+                <a href="#collab-form" class="service-tile-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="service-tile">
+                <div class="service-tile-top">
+                    <i class="fas fa-shapes service-tile-icon"></i>
+                    <h3>Marketing</h3>
+                </div>
+                <p>Strategically positioning technologies for success.</p>
+                <a href="#collab-form" class="service-tile-arrow-btn"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Five Elements Detailed Breakdown (Big & Bold Titles) -->
+    <section class="elements-detail-section">
+        <div class="container">
+            <div class="elements-detail-header">
+                <span class="section-subtitle-tag">Core Focus</span>
+                <h2>The Five Elements of Impact</h2>
+            </div>
+
+            <!-- 01. Water -->
+            <div class="element-detail-card">
+                <div class="element-detail-img">
+                    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1200&auto=format&fit=crop" alt="Water Conservation & Management">
+                </div>
+                <div class="element-detail-info">
+                    <span class="element-detail-badge">01. WATER</span>
+                    <h3>Sustainability & Pure Resource Management</h3>
+                    <p>Advancing scalable hydro-conservation, industrial water recycling, and innovative desalination methods to protect critical aquatic ecosystems and ensure community access to clean water.</p>
+                    <ul class="element-detail-features">
+                        <li><i class="fas fa-check-circle"></i> Industrial Wastewater Recycling</li>
+                        <li><i class="fas fa-check-circle"></i> Hydro-Conservation Frameworks</li>
+                        <li><i class="fas fa-check-circle"></i> Smart Watershed Monitoring</li>
+                        <li><i class="fas fa-check-circle"></i> Membrane Desalination Transfer</li>
+                    </ul>
+	<div style="margin-top: 24px;">
+    <a href="{% url 'service_water' %}" class="element-btn-discover">
+        Discover More <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+
+                </div>
+            </div>
+
+            <!-- 02. Sky -->
+            <div class="element-detail-card">
+                <div class="element-detail-img">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1200&auto=format&fit=crop" alt="Sky Digital Transformation">
+                </div>
+                <div class="element-detail-info">
+                    <span class="element-detail-badge">02. SKY</span>
+                    <h3>Cloud Infrastructure & Digital Transformation</h3>
+                    <p>Harnessing cloud infrastructure, satellite connectivity, and AI-driven data intelligence to modernize legacy operations and connect remote global communities.</p>
+                    <ul class="element-detail-features">
+                        <li><i class="fas fa-check-circle"></i> Cloud Architecture & Migration</li>
+                        <li><i class="fas fa-check-circle"></i> Satellite Geospatial Intelligence</li>
+                        <li><i class="fas fa-check-circle"></i> IoT Sensor Grid Deployment</li>
+                        <li><i class="fas fa-check-circle"></i> Enterprise Digital Strategy</li>
+                    </ul>
+	<div style="margin-top: 24px;">
+    <a href="{% url 'service_sky' %}" class="element-btn-discover">
+        Discover More <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+                </div>
+            </div>
+
+           <!-- 03. Air -->
+<div class="element-detail-card">
+    <div class="element-detail-img">
+        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=1200&auto=format&fit=crop" alt="Air Clean Mobility">
+    </div>
+    <div class="element-detail-info">
+        <span class="element-detail-badge">03. AIR</span>
+        <h3>Zero-Emissions & Environmental Mobility</h3>
+        <p>Spearheading zero-emission transport frameworks, clean wind generation, and advanced air filtration systems that actively capture carbon and cleanse atmospheric layers.</p>
+        <ul class="element-detail-features">
+            <li><i class="fas fa-check-circle"></i> Zero-Emission Fleet Systems</li>
+            <li><i class="fas fa-check-circle"></i> Wind Generation Integration</li>
+            <li><i class="fas fa-check-circle"></i> Industrial Carbon Capture Tech</li>
+            <li><i class="fas fa-check-circle"></i> Air Quality Sensor Networks</li>
+        </ul>
+        
+        <!-- Action Button -->
+        <div style="margin-top: 24px;">
+            <a href="{% url 'service_air' %}" class="element-btn-discover">
+                Discover More <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+            <!-- 04. Earth -->
+            <div class="element-detail-card">
+                <div class="element-detail-img">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop" alt="Earth Land Stewardship">
+                </div>
+                <div class="element-detail-info">
+                    <span class="element-detail-badge">04. EARTH</span>
+                    <h3>Agri-Tech & Land Stewardship</h3>
+                    <p>Driving soil regeneration, precision agriculture frameworks, and next-generation bio-inputs to guarantee food security while revitalizing degraded arable land.</p>
+                    <ul class="element-detail-features">
+                        <li><i class="fas fa-check-circle"></i> Regenerative Soil Therapeutics</li>
+                        <li><i class="fas fa-check-circle"></i> Precision Farming Algorithms</li>
+                        <li><i class="fas fa-check-circle"></i> Organic Bio-Fertilizer Protocols</li>
+                        <li><i class="fas fa-check-circle"></i> Sustainable Forestry Programs</li>
+                    </ul>
+	<div style="margin-top: 24px;">
+    <a href="{% url 'service_earth' %}" class="element-btn-discover">
+        Discover More <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+                </div>
+            </div>
+
+            <!-- 05. Fire -->
+            <div class="element-detail-card">
+                <div class="element-detail-img">
+                    <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=1200&auto=format&fit=crop" alt="Fire Clean Energy Innovation">
+                </div>
+                <div class="element-detail-info">
+                    <span class="element-detail-badge">05. FIRE</span>
+                    <h3>Clean Power & Industrial Energy Optimization</h3>
+                    <p>Deploying solar energy parks, industrial thermal optimization, and smart grid battery storage architectures to power heavy manufacturing with zero fossil-fuel dependency.</p>
+                    <ul class="element-detail-features">
+                        <li><i class="fas fa-check-circle"></i> Commercial Solar Installations</li>
+                        <li><i class="fas fa-check-circle"></i> Thermal Recovery Optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Grid-Scale Battery Storage</li>
+                        <li><i class="fas fa-check-circle"></i> Clean Hydrogen Infrastructure</li>
+                    </ul>
+	<div style="margin-top: 24px;">
+    <a href="{% url 'service_fire' %}" class="element-btn-discover">
+        Discover More <i class="fas fa-arrow-right"></i>
+    </a>
+</div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. "Call for Global Tech Collaboration" Form Section -->
+    <section class="container collab-form-section" id="collab-form">
+        <div class="collab-form-header">
+            <h2>Call for Global<span class="highlight-blue">Tech Collaboration</span></h2>
+        </div>
+
+        <div class="collab-form-wrap">
+            <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}
+                
+                <div class="collab-row-2col">
+                    <div class="underlined-field">
+                        <i class="far fa-building"></i>
+                        <input type="text" name="company_name" placeholder="Name of Company" required>
+                    </div>
+                    <div class="underlined-field">
+                        <i class="far fa-calendar-alt"></i>
+                        <input type="text" name="establishment_year" placeholder="Enter Year of Establishment">
+                    </div>
+                </div>
+
+                <div class="collab-row-2col">
+                    <div class="underlined-field">
+                        <i class="far fa-user"></i>
+                        <input type="text" name="name" placeholder="First Name" required>
+                    </div>
+                    <div class="underlined-field">
+                        <i class="far fa-user"></i>
+                        <input type="text" name="last_name" placeholder="Last Name">
+                    </div>
+                </div>
+
+                <div class="collab-row-2col">
+                    <div class="underlined-field">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="underlined-field">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="tel" name="phone" placeholder="Mobile Number">
+                    </div>
+                </div>
+
+                <!-- Technology Categories Checkboxes -->
+                <label class="form-section-title">Technology Categories</label>
+                <div class="checkbox-group-row">
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Sky"> Sky-based Technology</label>
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Water"> Water-based Technology</label>
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Fire"> Fire-based Technology</label>
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Land"> Land-based Technology</label>
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Air"> Air-based Technology</label>
+                    <label class="check-item"><input type="checkbox" name="tech_category" value="Other"> Other</label>
+                </div>
+
+                <!-- Product Deals Textarea -->
+                <label class="form-section-title">Product Deals</label>
+                <textarea class="deals-textarea-box" name="message" placeholder="Provide product details, specifications, and deal scope..."></textarea>
+
+                <div class="collab-row-2col">
+                    <div class="underlined-field">
+                        <i class="fas fa-dollar-sign"></i>
+                        <input type="text" name="sales_price" placeholder="Enter Sales Base Price">
+                    </div>
+                    <div class="underlined-field">
+                        <i class="fas fa-box-open"></i>
+                        <input type="text" name="quantity" placeholder="Enter Quantity Available">
+                    </div>
+                </div>
+
+                <!-- Prefer to Sale in Market Checkboxes -->
+                <label class="form-section-title">Prefer to Sale in Market</label>
+                <div class="checkbox-group-row">
+                    <label class="check-item"><input type="checkbox" name="target_market" value="Asian"> Asian</label>
+                    <label class="check-item"><input type="checkbox" name="target_market" value="African"> African</label>
+                    <label class="check-item"><input type="checkbox" name="target_market" value="European"> European</label>
+                    <label class="check-item"><input type="checkbox" name="target_market" value="Pacific Island"> Pacific Island</label>
+                    <label class="check-item"><input type="checkbox" name="target_market" value="Russian USSR"> Russian USSR</label>
+                    <label class="check-item"><input type="checkbox" name="target_market" value="American"> American</label>
+                </div>
+
+                <!-- Agreement & Submit -->
+                <label class="agree-terms-label">
+                    <input type="checkbox" required>
+                    <span>I agree that my submitted data is being <a href="#">collected and stored</a>.</span>
+                </label>
+
+                <button type="submit" class="btn-lime-submit">
+                    <i class="fas fa-paper-plane"></i> Submit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <!-- Top Row -->
+        <div class="footer-top-row">
+            <div class="footer-brand-logo">
+                <img src="https://pwbl.in/wp-content/uploads/2025/01/Asset-4@2x.png" alt="PWBL">
+            </div>
+            <div class="footer-tagline-hero">
+                Innovating Today for a Sustainable Future
+            </div>
+        </div>
+
+        <!-- Main 3-Column Grid -->
+        <div class="footer-main-grid">
+            
+            <!-- Column 1: Newsletter -->
+            <div class="footer-newsletter-wrap">
+                <h4 class="footer-heading-text">Newsletter Signup</h4>
+                <form class="footer-newsletter-form" onsubmit="handleNewsletterSubmit(event, this)">
+                    {% csrf_token %}
+                    <div class="newsletter-input-box">
+                        <i class="far fa-envelope"></i>
+                        <input type="email" name="email" placeholder="Enter Your Email Address" required>
+                        <button type="submit" class="newsletter-submit-btn"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <label class="privacy-check-label">
+                        <input type="checkbox" required>
+                        <span>I agree to the <a href="{% url 'privacy_policy' %}">Privacy Policy</a>.</span>
+                    </label>
+                    <div class="newsletter-feedback" style="font-size: 13px; margin-top: -12px; margin-bottom: 15px; display: none;"></div>
+                </form>
+                <div class="footer-socials">
+                    <a href="#" class="social-circle-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fas fa-globe"></i></a>
+                    <a href="#" class="social-circle-btn"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Navigation Menu -->
+            <div>
+                <h4 class="footer-heading-text">Menu</h4>
+                <ul class="footer-links-list">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+                    <li><a href="{% url 'events' %}">Events</a></li>
+                    <li><a href="{% url 'join' %}">Join PWBL</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Contact / Say Hello -->
+            <div class="footer-contact-details">
+                <h4 class="footer-heading-text">Say Hello</h4>
+                <p><a href="mailto:admin@pwbl.in">admin@pwbl.in</a></p>
+                <p>Jaipur, Rajasthan, India</p>
+                <p>+91 96025 70498</p>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="footer-bottom-row">
+            <div>PWBL &copy; {% now "Y" %}. All Rights Reserved.</div>
+            <a href="#" class="scroll-top-btn" title="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+<!-- Fast Counter Script -->
+    <script>
+        const fastCounters = document.querySelectorAll('.fast-counter');
+        let counterStarted = false;
+
+        const runFastCounters = () => {
+            fastCounters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 700;
+                const stepTime = 15;
+                const totalSteps = duration / stepTime;
+                const increment = target / totalSteps;
+
+                let current = 0;
+                const update = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        setTimeout(update, stepTime);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                update();
+            });
+        };
+
+        const statsSection = document.getElementById('services-stats-box');
+        if (statsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !counterStarted) {
+                    counterStarted = true;
+                    runFastCounters();
+                }
+            }, { threshold: 0.2 });
+
+            observer.observe(statsSection);
+        }
+    </script>
+<script>
+function handleNewsletterSubmit(e, form) {
+    e.preventDefault();
+    const emailInput = form.querySelector('input[type="email"]');
+    const feedback = form.querySelector('.newsletter-feedback');
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]') ? form.querySelector('[name=csrfmiddlewaretoken]').value : '';
+
+    const formData = new FormData();
+    formData.append('email', emailInput.value);
+
+    fetch("{% url 'newsletter_subscribe' %}", {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken
+        },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        feedback.style.display = 'block';
+        feedback.style.color = (data.status === 'success' || data.status === 'info') ? '#10b981' : '#ef4444';
+        feedback.innerText = data.message;
+        if (data.status === 'success') {
+            emailInput.value = '';
+        }
+    })
+    .catch(() => {
+        feedback.style.display = 'block';
+        feedback.style.color = '#ef4444';
+        feedback.innerText = 'Unable to subscribe right now. Please try again later.';
+    });
+}
+</script>
+<script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer && backdrop) {
+                drawer.classList.toggle('open');
+                backdrop.classList.toggle('open');
+            }
+        }
+    </script>
+<script>
+    const openBtn = document.getElementById('mobileMenuOpen');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    const drawer = document.getElementById('sideDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawer.classList.add('is-open');
+            backdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('is-open');
+            backdrop.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body>
+</html>

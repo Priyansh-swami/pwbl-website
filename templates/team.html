@@ -1,0 +1,600 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Leadership & Team – Panchtatva Worldwide Business</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
+
+    <style>
+        :root {
+            --theme-bg-pastel: #f7f9f8;
+            --theme-bg-dark: #111111;
+            --theme-text-dark: #171717;
+            --theme-text-muted: #64748b;
+            --theme-lime: #b3cc19;
+            --theme-emerald: #10b981;
+            --theme-border-subtle: #e2e8f0;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-space: 'Space Grotesk', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-poppins); }
+        body { background-color: var(--theme-bg-pastel); color: var(--theme-text-dark); line-height: 1.6; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 25px; }
+
+        /* Site Header */
+        .site-header { width: 100%; padding: 24px 0; background: rgba(247, 249, 248, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--theme-border-subtle); position: sticky; top: 0; z-index: 1000; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { max-height: 42px; width: auto; }
+        .nav-menu { display: flex; list-style: none; gap: 26px; align-items: center; }
+        .nav-menu a { color: var(--theme-text-dark); text-decoration: none; font-size: 15px; font-weight: 500; }
+        .nav-menu a:hover { color: var(--theme-emerald); }
+        .btn-touch { background-color: var(--theme-bg-dark); color: #ffffff !important; padding: 12px 28px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; }
+
+        /* Page Banner */
+        .team-hero-banner { text-align: center; padding: 80px 0 50px; }
+        .banner-pill { font-size: 13px; font-weight: 800; color: var(--theme-emerald); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .banner-title { font-family: var(--font-space); font-size: 50px; font-weight: 800; color: #171717; margin-bottom: 15px; }
+        .banner-desc { font-size: 17px; color: var(--theme-text-muted); max-width: 620px; margin: 0 auto; }
+
+        /* Team Grid */
+        .team-full-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; padding: 40px 0 100px; }
+        .team-card-item { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.04); border: 1px solid var(--theme-border-subtle); transition: transform 0.3s ease; }
+        .team-card-item:hover { transform: translateY(-6px); }
+        .member-photo-wrap { position: relative; height: 320px; width: 100%; overflow: hidden; background: #e2e8f0; }
+        .member-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .member-info-box { padding: 25px; }
+        .member-name { font-family: var(--font-space); font-size: 21px; font-weight: 700; margin-bottom: 4px; color: #171717; }
+        .member-designation { font-size: 13.5px; font-weight: 600; color: var(--theme-emerald); margin-bottom: 12px; display: block; }
+        .member-bio { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px; }
+        .member-social-links { display: flex; gap: 12px; }
+        .member-social-links a { width: 34px; height: 34px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: #171717; font-size: 13px; text-decoration: none; transition: 0.2s; }
+        .member-social-links a:hover { background: var(--theme-lime); }
+
+        /* Footer */
+        .site-footer { width: 100%; background-color: #111111; color: #999999; padding: 70px 0 35px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; margin-top: 40px; display: flex; justify-content: space-between; font-size: 13.5px; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .banner-title { font-size: 34px; }
+        }
+/* =========================================================
+   TEAM PAGE MOBILE INTEGRATION & HEADER
+   ========================================================= */
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Base Navbar */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14.5px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: #5850ec;
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #111827;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.mobile-cta-item {
+    display: none;
+}
+
+/* Mobile & Tablet Reflow */
+@media (max-width: 900px) {
+    /* Mobile Drawer */
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-cta-item {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 22px 24px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    .nav-menu.is-active {
+        display: flex !important;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 8px 0;
+        font-size: 16px;
+    }
+
+    /* Heading Adjustments */
+    .team-hero, .hero-section, .team-header-section {
+        padding: 40px 18px 20px !important;
+        text-align: center;
+    }
+
+    .team-hero h1, .team-header-section h1, h1 {
+        font-size: 30px !important;
+        line-height: 1.25 !important;
+    }
+
+    .team-hero p, .team-header-section p {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px;
+    }
+
+    /* Team Member Card Grid Stacking */
+    .team-grid,
+    .team-members-container,
+    .team-wrapper,
+    .team-cards-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        padding: 20px 16px 50px !important;
+    }
+
+    .team-card,
+    .member-card,
+    .team-item {
+        width: 100% !important;
+        max-width: 380px !important;
+        margin: 0 auto;
+    }
+
+    .team-card img,
+    .member-img,
+    .team-item img {
+        width: 100% !important;
+        height: 280px !important;
+        object-fit: cover !important;
+        border-radius: 12px;
+    }
+}
+/* =========================================================
+   TOP NAVBAR & MOBILE SIDE-DRAWER STYLES
+   ========================================================= */
+
+/* Base Header Layout */
+.site-header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo img, .drawer-logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Desktop Menu & Distinct Divider Lines */
+.desktop-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav-menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav-menu li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 16px;
+    display: inline-block;
+    transition: color 0.2s ease;
+}
+
+.desktop-nav-menu li a:hover,
+.desktop-nav-menu li a.active {
+    color: #5850ec;
+}
+
+.desktop-nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 16px;
+    background-color: #94a3b8; /* Crisp Slate Gray */
+}
+
+.nav-btn {
+    background: #111827;
+    color: #ffffff !important;
+    padding: 9px 20px;
+    border-radius: 25px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Mobile Drawer Overlay */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #111827;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(3px);
+    z-index: 99998;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.mobile-drawer-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 78%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px 30px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.drawer-menu-list {
+    list-style: none;
+    padding: 24px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.drawer-menu-list li a {
+    text-decoration: none;
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    display: block;
+}
+
+.drawer-footer {
+    padding-top: 24px;
+}
+
+.drawer-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+    .desktop-nav-menu,
+    .desktop-cta {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <!-- Site Header -->
+<!-- Top Navbar -->
+<!-- Top Navbar -->
+<header class="site-header">
+    <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="desktop-nav-menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Our Services</a></li>
+            <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/join/">Join PWBL</a></li>
+            <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+        </ul>
+
+        <!-- Direct Contact Action -->
+        <div class="desktop-cta">
+            <a href="{% url 'contact' %}" class="nav-btn">Get In Touch</a>
+        </div>
+
+        <!-- Mobile Trigger -->
+        <button class="mobile-menu-toggle" id="mobileMenuOpen" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Drawer Backdrop & Panel -->
+<div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="mobile-drawer" id="sideDrawer">
+    <div class="drawer-header">
+        <a href="{% url 'home' %}" class="drawer-logo">
+            <img src="{% static 'images/logo.jpg' %}" alt="Panchtatva Logo">
+        </a>
+        <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <ul class="drawer-menu-list">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="{% url 'services' %}">Our Services</a></li>
+        <li><a href="{% url 'blog' %}">Blog Standard</a></li>
+        <li><a href="/events/">Events</a></li>
+        <li><a href="/join/">Join PWBL</a></li>
+        <li><a href="{% url 'internship' %}">Internship Opportunity</a></li>
+    </ul>
+
+    <div class="drawer-footer">
+        <a href="{% url 'contact' %}" class="drawer-cta-btn">Get In Touch</a>
+    </div>
+</aside>
+
+
+    <!-- Page Banner -->
+    <section class="team-hero-banner">
+        <div class="container">
+            <span class="banner-pill">Leadership & Innovators</span>
+            <h1 class="banner-title">Meet Our Team</h1>
+            <p class="banner-desc">The visionary minds, researchers, and strategists driving clean-tech adoption and sustainable transformation across the globe.</p>
+        </div>
+    </section>
+
+    <!-- Team Showcase Grid -->
+    <div class="container">
+        <div class="team-full-grid">
+            
+            <!-- Member 1: Mr. Vaibhav Chordia -->
+            <div class="team-card-item">
+                <div class="member-photo-wrap">
+                    <img src="{% static 'images/team-vaibhav.jpg' %}" alt="Mr. Vaibhav Chordia">
+                </div>
+                <div class="member-info-box">
+                    <h3 class="member-name">Mr. Vaibhav Chordia</h3>
+                    <span class="member-designation">Chief Executive Officer</span>
+                    <p class="member-bio">Spearheading international operations, technological investments, and strategic worldwide ventures.</p>
+                    <div class="member-social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:admin@pwbl.in"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2: Dr. Ripu Ranjan Sinha -->
+            <div class="team-card-item">
+                <div class="member-photo-wrap">
+                    <img src="{% static 'images/team-ripu-ranjan.jpg' %}" alt="Dr. Ripu Ranjan Sinha">
+                </div>
+                <div class="member-info-box">
+                    <h3 class="member-name">Dr. Ripu Ranjan Sinha</h3>
+                    <span class="member-designation">Advisor & Director</span>
+                    <p class="member-bio">Leading research commercialization, patent strategy, and cross-border industrial alliances.</p>
+                    <div class="member-social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:admin@pwbl.in"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+	</div>
+      </div>
+           
+
+               <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div>PWBL &copy; 2026. All Rights Reserved.</div>
+                <a href="{% url 'about' %}" style="color: #ffffff; text-decoration: none;">&larr; Back to About Us</a>
+            </div>
+        </div>
+    </footer>
+<script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer && backdrop) {
+                drawer.classList.toggle('open');
+                backdrop.classList.toggle('open');
+            }
+        }
+    </script>
+
+<script>
+    const openBtn = document.getElementById('mobileMenuOpen');
+    const closeBtn = document.getElementById('mobileMenuClose');
+    const drawer = document.getElementById('sideDrawer');
+    const backdrop = document.getElementById('drawerBackdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawer.classList.add('is-open');
+            backdrop.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            drawer.classList.remove('is-open');
+            backdrop.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openBtn) openBtn.addEventListener('click', () => toggleDrawer(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body>
+</html>
